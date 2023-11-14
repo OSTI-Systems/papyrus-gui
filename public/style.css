@@ -1,6 +1,7 @@
 /* styles.css */
 
 body {
+  background-color: #292841;
   margin: 0;
   overflow: hidden;
 }
@@ -9,11 +10,37 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   height: 100vh;
+  width: 90%;
+  margin: auto;
 }
   
 .button {
-  margin: 10px;
-  padding: 10px;
-  font-size: 16px;
+  border: 0px;
+  border-radius: 8px;
+  margin: 0 2%;
+  padding: 2%;
+  font-size: 2.5vw;
+  width: 18%;
+  color: #ffffff;
+  background-color: #1C1B29;
+  transition: 0.15s;
+  box-shadow: none;
+}
+
+.button:first-of-type {
+  margin-left: 0;
+}
+
+.button:last-of-type {
+  margin-right: 0;
+}
+
+.button:hover {
+  background-color: #33323e;
+}
+
+.button:focus {
+  background-color: #861cff;
 }
