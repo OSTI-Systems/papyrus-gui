@@ -38,3 +38,42 @@ app.use(express.static('public'));
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
+
+
+const net = require('net');
+
+// Replace these values with your server's address and port
+const serverAddress = '192.168.1.47';
+const serverPort = 1026;
+
+// Create a TCP socket
+const client = net.createConnection({ host: serverAddress, port: serverPort }, () => {
+    console.log('Connected to the server!');
+
+    // Send a message to the server
+    const message = 'Hello, Server! This is a TCP packet.';
+    client.write(message);
+});
+
+// Handle data received from the server
+client.on('data', (data) => {
+    console.log('Received from server:', data.toString());
+    // Close the connection after receiving a response (optional)
+    client.end();
+});
+
+// Handle connection closure
+client.on('end', () => {
+    console.log('Connection to the server closed.');
+});
+
+// Handle errors
+client.on('error', (err) => {
+    console.error('Error:', err.message);
+});
+
+// Handle connection termination
+client.on('close', () => {
+    console.log('Connection closed.');
+});
