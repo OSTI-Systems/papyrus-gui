@@ -6,29 +6,89 @@ const port = 3000;
 app.use(express.static('public'));
 app.use(bodyParser.json()); // Parse JSON-encoded bodies
 
+const net = require('net');
+const { Socket } = require('dgram');
+
+// Replace these values with your server's address and port
+const serverAddress = '10.10.10.20';
+const serverPort = 3141;
+
+let client = new net.Socket();
+let connected = false;
+
 // Placeholder backend functions for each of the buttons
 app.post('/button1', (req, res) => {
   console.log('button1');
+  const client = net.createConnection(serverPort, serverAddress, () => {
+    client.write('Mission 1');
+    client.destroySoon();
+    client.on('error', (error) => {
+      console.error(error);
+    });
+    client.on('close', () => {
+      console.log('Disconnected from server');
+    });
+  });
   res.end();
 });
 
 app.post('/button2', (req, res) => {
   console.log('button2');
+  const client = net.createConnection(serverPort, serverAddress, () => {
+    client.write('Mission 2');
+    client.destroySoon();
+    client.on('error', (error) => {
+      console.error(error);
+    });
+    client.on('close', () => {
+      console.log('Disconnected from server');
+    });
+  });
   res.end();
 });
 
 app.post('/button3', (req, res) => {
   console.log('button3');
+  const client = net.createConnection(serverPort, serverAddress, () => {
+    client.write('Mission 3');
+    client.destroySoon();
+    client.on('error', (error) => {
+      console.error(error);
+    });
+    client.on('close', () => {
+      console.log('Disconnected from server');
+    });
+  });
   res.end();
 });
 
 app.post('/button4', (req, res) => {
   console.log('button4');
+  const client = net.createConnection(serverPort, serverAddress, () => {
+    client.write('Mission 4');
+    client.destroySoon();
+    client.on('error', (error) => {
+      console.error(error);
+    });
+    client.on('close', () => {
+      console.log('Disconnected from server');
+    });
+  });
   res.end();
 });
 
 app.post('/button5', (req, res) => {
   console.log('button5');
+  const client = net.createConnection(serverPort, serverAddress, () => {
+    client.write('Mission 5');
+    client.destroySoon();
+    client.on('error', (error) => {
+      console.error(error);
+    });
+    client.on('close', () => {
+      console.log('Disconnected from server');
+    });
+  });
   res.end();
 });
 
@@ -39,23 +99,7 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-
-
-const net = require('net');
-
-// Replace these values with your server's address and port
-const serverAddress = '192.168.1.47';
-const serverPort = 1026;
-
-// Create a TCP socket
-const client = net.createConnection({ host: serverAddress, port: serverPort }, () => {
-    console.log('Connected to the server!');
-
-    // Send a message to the server
-    const message = 'Hello, Server! This is a TCP packet.';
-    client.write(message);
-});
-
+/*
 // Handle data received from the server
 client.on('data', (data) => {
     console.log('Received from server:', data.toString());
@@ -72,8 +116,4 @@ client.on('end', () => {
 client.on('error', (err) => {
     console.error('Error:', err.message);
 });
-
-// Handle connection termination
-client.on('close', () => {
-    console.log('Connection closed.');
-});
+*/
